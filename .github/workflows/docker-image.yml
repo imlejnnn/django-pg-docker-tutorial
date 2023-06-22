@@ -22,5 +22,5 @@ jobs:
       run: docker login --username ${{ secrets.YD_USERNAME }} --password ${{ secrets.YD_TOKEN }} cr.yandex
       
     - name: Build the Docker image
-      run: docker push cr.yandex/YD_REGISTRY/YD_REPO
+      run: docker push cr.yandex/${{ secrets.YD_REGISTRY }}/${{ secrets.YD_REPO }}
       
