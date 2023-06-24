@@ -21,7 +21,7 @@ jobs:
         registry: cr.yandex
 
     - name: Docker pull
-      run: docker pull cr.yandex/${{ secrets.YD_REGISTRY }}/${{ secrets.YD_REPO_HELM }}:latest cr.yandex
+      run: docker pull cr.yandex/${{ secrets.YD_REGISTRY }}/${{ secrets.YD_REPO_HELM }}:latest
 
     - name: Helm test
       run: "docker run cr.yandex/${{ secrets.YD_REGISTRY }}/${{ secrets.YD_REPO_HELM }} \"helm upgrade --install --namespace default app-dj /usr/src/chart/my-django-app --debug\""
