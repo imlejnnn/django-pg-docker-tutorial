@@ -27,3 +27,13 @@ jobs:
       with:
         push: true
         tags: cr.yandex/${{ secrets.YD_REGISTRY }}/${{ secrets.YD_REPO }}:latest
+
+
+    - name: Deploy helm app
+      uses: addnab/docker-run-action@v3
+      with:
+        username: ${{ secrets.YD_USERNAME }}
+        password: ${{ secrets.YD_TOKEN }}
+        registry: cr.yandex
+        image: cr.yandex/${{ secrets.YD_REGISTRY }}/${{ secrets.YD_REPO_HELM }}
+        run: "helm upgrade --install --namespace default app-dj /usr/src/chart/my-django-app --debug"
